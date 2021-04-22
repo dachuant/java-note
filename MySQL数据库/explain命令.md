@@ -31,10 +31,10 @@ Select 查询的序列号，包含一组数字，表示查询中执行select子�
 | ------------ | ------------------------------------------------------------ |
 | SIMPLE       | 简单的select查询，查询中不包含子查询或者UNION                |
 | PRIMARY      | 查询中若包含任何复杂的子部分，最外层则被标记为PRIMARY        |
-| SUBQUERY     | 在select或where列表中包含了之查询                            |
+| SUBQUERY     | 在select或where列表中包含了子查询                            |
 | DERIVED      | 在FROM列表中包含的子查询被标记为DERIVED（衍生），MySQL会递归执行这些子查询，把结果放在临时表 |
-| UNION        | 若第二个SELECT出现在UNION之后，则被标记为UNION：若UNION包含在FROM子句的子查询中，外层SELECT将被标记为：DERIVED|
-| UNION RESULT | 从UNION表获取结果的SELECT                                                             |
+| UNION        | 若第二个SELECT出现在UNION之后，则被标记为UNION：若UNION包含在FROM子句的子查询中，外层SELECT将被标记为：DERIVED |
+| UNION RESULT | 从UNION表获取结果的SELECT                                    |
 
 ### table
 
@@ -62,11 +62,11 @@ system > const > eq_ref > ref > range > index > all
 | index  | Full Index Scan，Index与All区别为index类型只遍历索引树。这通常比ALL快，因为索引文件通常比数据文件小。（也就是说虽然all和Index都是读全表，但index是从索引中读取的，而all是从硬盘读取的） |
 | all    | Full Table Scan 将遍历全表以找到匹配的行                     |
 
-###  possible_keys和
+###  possible_keys
 
 possible_keys：显示可能应用在这张表中的索引，一个或多个。查询涉及到的字段上若存在索引，则该索引将被列出，**但不一定被查询实际使用**。
 
-key：
+### key
 
 可以实际使用的索引，如果为NULL，则没有使用索引。（可能原因包括没有建立索引或索引失效）
 
